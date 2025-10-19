@@ -7,4 +7,6 @@ data class Todo(
     val title: String = "",
     val description: String = "",
     val isCompleted: Boolean = false,
+    val isPinned: Boolean = false,
+    val categoryId: Long,
 )

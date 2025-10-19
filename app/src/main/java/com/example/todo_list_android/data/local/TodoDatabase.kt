@@ -8,7 +8,7 @@ import com.example.todo_list_android.domain.model.Todo
 
 @Database(
     entities = [TodoEntity::class],
-    version = 2,
+    version = 3,
     exportSchema = false
 )
 abstract class TodoDatabase : RoomDatabase() {

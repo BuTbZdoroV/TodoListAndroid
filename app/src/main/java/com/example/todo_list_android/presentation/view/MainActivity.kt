@@ -12,7 +12,13 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.rememberNavController
+import com.example.todo_list_android.presentation.ui.navigation.Screen
+import com.example.todo_list_android.presentation.ui.navigation.TodoNavGraph
+import com.example.todo_list_android.presentation.ui.navigation.homeGraph
 import com.example.todo_list_android.presentation.ui.screen.HomeScreen
 import com.example.todo_list_android.presentation.ui.theme.TodoListAndroidTheme
 import com.example.todo_list_android.presentation.viewmodel.ui.todo.TodoViewModel
@@ -25,30 +31,17 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
-            TodoListAndroidTheme {
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    HomeScreen(
-                        modifier = Modifier.padding(innerPadding),
-                        viewModel = hiltViewModel()
+            TodoListAndroidTheme(dynamicColor = false) {
+                val navController = rememberNavController()
+
+
+                    TodoNavGraph(
+                        navController = navController,
+                        modifier = Modifier.fillMaxSize()
                     )
-                }
+
             }
         }
     }
 }
 
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
-}
-
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    TodoListAndroidTheme {
-        Greeting("Android")
-    }
-}

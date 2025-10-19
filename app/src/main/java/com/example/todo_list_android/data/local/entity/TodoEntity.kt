@@ -5,11 +5,13 @@ import androidx.room.PrimaryKey
 
 
 @Entity(tableName = "todos")
-data class TodoEntity (
-    @PrimaryKey(autoGenerate = true) val id: Long? = null,
+data class TodoEntity(
+    @PrimaryKey(autoGenerate = true)
+    val id: Long? = null,
     val title: String = "",
     val description: String = "",
     val isCompleted: Boolean,
-    val isPinned: Boolean
+    val isPinned: Boolean = false,
+    val categoryId: Long,
 
     )
